@@ -41,13 +41,13 @@ p.plot(line+centroid,line, color='red', linestyle='dashed', linewidth = 1)
 p.plot(line+centroid,-line, color='red', linestyle='dashed', linewidth = 1)
 p.scatter(breakin[2], 0, color= 'r', marker= ".", s=100)
 p.scatter([0,0], [imajpoints[0].imag,imajpoints[1].imag], color= 'r', marker= ".", s=100)
-for i in np.linspace(0,10000000,1000):
+for i in np.linspace(0,100000000,1000):
   a = sym.Poly(func+i, s)
   curves= np.roots(a.all_coeffs())
   for j in range(len(curves)):
       p.scatter([curves[j].real], [curves[j].imag], color= "green",  
             marker= "o", s=2)
  
-p.axvline(0)
-p.axhline(0)
+p.axes().spines['left'].set_position(('data',0))
+p.axes().spines['bottom'].set_position(('data',0))
 p.show()
